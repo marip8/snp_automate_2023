@@ -18,9 +18,11 @@
       <Progress start="0"
                 end="50">
         <Sequence>
-          <GetCurrentJointState name="Get Current Joint State"
-                                topic_name="/joint_states"
-                                current_state="{current_state}"/>
+          <RetryUntilSuccessful num_attempts="3">
+            <GetCurrentJointState name="Get Current Joint State"
+                                  topic_name="/joint_states"
+                                  current_state="{current_state}"/>
+          </RetryUntilSuccessful>
           <CreateJointStateMessage name="Create Joint State Message"
                                    joint_names="{home_state_joint_names}"
                                    joint_positions="{home_state_joint_positions}"
@@ -85,9 +87,11 @@
     <Sequence>
       <StartPointQueueMode name="Enable Robot"
                            service_name="start_point_queue_mode"/>
-      <GetCurrentJointState name="Get Current Joint State"
-                            topic_name="/joint_states"
-                            current_state="{current_state}"/>
+      <RetryUntilSuccessful num_attempts="3">
+        <GetCurrentJointState name="Get Current Joint State"
+                              topic_name="/joint_states"
+                              current_state="{current_state}"/>
+      </RetryUntilSuccessful>
       <UpdateTrajectoryStartState name="Update Trajectory Start State"
                                   joint_state="{current_state}"
                                   input_trajectory="{trajectory}"
@@ -221,9 +225,11 @@
     <Sequence>
       <StartPointQueueMode name="Enable Robot"
                            service_name="start_point_queue_mode"/>
-      <GetCurrentJointState name="Get Current Joint State"
-                            topic_name="/joint_states"
-                            current_state="{current_state}"/>
+      <RetryUntilSuccessful num_attempts="3">
+        <GetCurrentJointState name="Get Current Joint State"
+                              topic_name="/joint_states"
+                              current_state="{current_state}"/>
+      </RetryUntilSuccessful>
       <UpdateTrajectoryStartState name="Update Trajectory Start State"
                                   joint_state="{current_state}"
                                   input_trajectory="{approach}"
