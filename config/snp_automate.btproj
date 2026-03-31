@@ -92,9 +92,6 @@
         <Decorator ID="SetPage" editable="true">
             <input_port name="index" default="0"/>
         </Decorator>
-        <Action ID="StartPointQueueMode" editable="true">
-            <input_port name="service_name" default="start_point_queue_mode"/>
-        </Action>
         <Action ID="StartReconstructionService" editable="true">
             <input_port name="service_name" default="start_reconstruction"/>
             <input_port name="camera_frame" default="{camera_frame}"/>
